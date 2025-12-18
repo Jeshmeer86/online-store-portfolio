@@ -1,15 +1,21 @@
 // src/config/siteConfig.js
 export const siteConfig = {
-  // used on the hero section
-  storeName: "Jesh Store",
-  tagline: "Modern online shop built by Jeshmeer",
+  storeName: "Fundi Products Store",
+  tagline: "Shop our latest hardware products with ease",
   currency: "AED",
   primaryColor: "#0f766e",
 
-  // 👇 this controls the logo/brand link in the navbar
-  brand: {
-    text: "Fundi Products Store", // the text you see
-    href: "/", // where it links to
-    dataDiscover: true, // value for data-discover
+  // Portfolio brand (main site)
+  portfolioBrand: {
+    text: "Jeshmeer", // change this to whatever you want
+    href: "/", // portfolio home
+    dataDiscover: true,
+  },
+
+  // Store brand (store section)
+  storeBrand: {
+    text: "Fundi Products Store",
+    href: "/store", // store home
+    dataDiscover: true,
   },
 };
