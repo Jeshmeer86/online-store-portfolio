@@ -10,6 +10,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
+import Projects from "./pages/Projects";
+import ProjectPage from "./pages/ProjectPage";
+import ProjectsIndex from "./pages/ProjectsIndex";
 
 import "./styles/global.css";
 
@@ -25,7 +28,8 @@ export default function App() {
       <div className="app__content">
         <Routes>
           <Route path="/" element={<PortfolioHome />} />
-
+          <Route path="/store/projects" element={<ProjectsIndex />} />
+          <Route path="/store/projects/:slug" element={<ProjectPage />} />
           <Route path="/store" element={<StoreHome />} />
           <Route path="/store/products" element={<Products />} />
           <Route path="/store/products/:id" element={<ProductDetails />} />

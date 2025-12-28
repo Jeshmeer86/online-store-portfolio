@@ -26,16 +26,16 @@ export default function Footer() {
         <div className="footer__links">
           <NavLink to="/">Portfolio</NavLink>
           <NavLink to="/store">Store</NavLink>
-          <a href="mailto:youremail@example.com">Email</a>
+          <a href="mailto:jesasolutions@yahoo.com">Email</a>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/jeshmeer86"
             target="_blank"
             rel="noreferrer"
           >
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/jeshmeer-maharajh-802678222"
             target="_blank"
             rel="noreferrer"
           >
@@ -45,7 +45,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom muted">
-        © {year} • Built by Jeshmeer the Great • React + Vite
+        © {year} • Built by Jeshmeer • React + Vite
       </div>
     </footer>
   );

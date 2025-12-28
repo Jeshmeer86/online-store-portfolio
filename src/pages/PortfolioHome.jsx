@@ -1,3 +1,98 @@
+import ContactForm from "../components/ContactForm";
+
+const certifications = [
+  {
+    title: "Full-Stack Developer",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-full-stack.pdf",
+  },
+  {
+    title: "Back-End Developer",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-back-end.pdf",
+  },
+  {
+    title: "Front-End Developer",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-front-end.pdf",
+  },
+  {
+    title: "Python Developer",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-python-dev.pdf",
+  },
+  {
+    title: "JavaScript",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-javascript.pdf",
+  },
+  {
+    title: "TypeScript",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-typescript.pdf",
+  },
+  {
+    title: "React",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-react.pdf",
+  },
+  {
+    title: "SQL",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-sql.pdf",
+  },
+  {
+    title: "HTML",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-html.pdf",
+  },
+  {
+    title: "CSS",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-css.pdf",
+  },
+  {
+    title: "Python",
+    provider: "Mimo",
+    status: "Completed",
+    href: "/certificates/mimo-python.pdf",
+  },
+  /*{
+    title: "Game Dev with AI",
+    provider: "Mimo",
+    status: "In progress (33%)",
+    href: "/certificates/mimo-game-dev-ai-33.png",
+  },*/
+];
+
+const projects = [
+  {
+    title: "Fundi Products Store",
+    description:
+      "E-commerce template: product listing, search, cart, checkout flow, and clean routing under /store.",
+    stack: "React • Vite • Context API • React Router",
+    liveUrl: "", // add later to update all my projects
+    githubUrl: "", // add later to update all my projects
+  },
+  {
+    title: "Node/Express REST API",
+    description:
+      "REST API with validation, error handling, and a foundation for JWT auth + role-based access.",
+    stack: "Node • Express • MongoDB • Postman",
+    githubUrl: "", // add later
+  },
+];
+
 export default function PortfolioHome() {
   return (
     <main className="portfolio">
@@ -47,7 +142,37 @@ export default function PortfolioHome() {
             UI.
           </p>
         </div>
+        {/* CERTIFICATIONS */}
+        <section id="certifications" className="portfolio__certs">
+          <h2>Certifications</h2>
+          <p className="muted">
+            Proof of structured learning (Mimo) + continuous growth.
+          </p>
 
+          <div className="portfolio__certs-grid">
+            {certifications.map((c) => (
+              <div className="card" key={`${c.provider}-${c.title}`}>
+                <h3 style={{ marginBottom: 6 }}>{c.title}</h3>
+                <p className="muted" style={{ marginTop: 0 }}>
+                  {c.provider} • {c.status}
+                </p>
+
+                {c.href ? (
+                  <a
+                    className="btn btn--outline"
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View
+                  </a>
+                ) : (
+                  <p className="muted">Link available on request</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
         <div className="card">
           <h3>Stack</h3>
           <p>React, Vite, Node/Express, MongoDB/PostgreSQL, REST APIs.</p>
@@ -65,53 +190,47 @@ export default function PortfolioHome() {
       <section id="projects" className="portfolio__projects">
         <h2>Featured Projects</h2>
 
-        <article className="project">
-          <h3>Fundi Products Store</h3>
-          <p>
-            E-commerce template: product listing, search, cart, checkout flow,
-            and clean routing under /store.
-          </p>
-          <p className="muted">React • Vite • Context API • React Router</p>
+        {projects.map((p) => {
+          const hasLinks = Boolean(p.liveUrl || p.githubUrl);
 
-          <div className="portfolio__cta">
-            <a
-              className="btn btn--outline"
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Live Demo
-            </a>
-            <a
-              className="btn btn--outline"
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
-        </article>
+          return (
+            <article className="project" key={p.title}>
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <p className="muted">{p.stack}</p>
 
-        <article className="project">
-          <h3>Node/Express REST API</h3>
-          <p>
-            REST API with validation, error handling, and a foundation for JWT
-            auth + role-based access.
-          </p>
-          <p className="muted">Node • Express • MongoDB • Postman</p>
+              {hasLinks ? (
+                <div className="portfolio__cta">
+                  {p.liveUrl ? (
+                    <a
+                      className="btn btn--outline"
+                      href={p.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Live Demo
+                    </a>
+                  ) : null}
 
-          <div className="portfolio__cta">
-            <a
-              className="btn btn--outline"
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
-        </article>
+                  {p.githubUrl ? (
+                    <a
+                      className="btn btn--outline"
+                      href={p.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  ) : null}
+                </div>
+              ) : (
+                <p className="muted" style={{ margin: 0 }}>
+                  Links coming soon
+                </p>
+              )}
+            </article>
+          );
+        })}
       </section>
 
       {/* SKILLS */}
@@ -140,7 +259,12 @@ export default function PortfolioHome() {
       {/* CONTACT */}
       <section className="portfolio__contact">
         <h2>Contact</h2>
-        <p>Dubai • Open to Junior Full Stack roles (Security-aware)</p>
+        <p className="muted">
+          Dubai • Open to Full Stack / Frontend roles (Security-aware)
+        </p>
+        <ContactForm />
+      </section>
+      <section>
         <div className="portfolio__cta">
           <a className="btn" href="mailto:jesasolutions@yahoo.com">
             Email
@@ -155,7 +279,7 @@ export default function PortfolioHome() {
           </a>
           <a
             className="btn btn--outline"
-            href="www.linkedin.com/in/jeshmeer-maharajh-802678222"
+            href="https://www.linkedin.com/in/jeshmeer-maharajh-802678222"
             target="_blank"
             rel="noreferrer"
           >
