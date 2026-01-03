@@ -96,11 +96,21 @@ const projects = [
 export default function PortfolioHome() {
   return (
     <main className="portfolio">
+      {/* COMPANY DETAILS */}
+      <section className="portfolio__hero-company">
+        <div className="portfolio__hero-company-inner ">
+          <h1>Jeshmeer International</h1>
+          <h2>A Software Engineering Company</h2>
+          <p>Where ideas become systems</p>
+        </div>
+      </section>
+
       {/* HERO */}
       <section className="portfolio__hero">
         <div className="portfolio__hero-inner">
           <div>
             <h1>Jeshmeer Maharajh</h1>
+            <h2>Software Developer</h2>
             <p className="muted">
               Full Stack Developer • Security-aware (AppSec-leaning)
             </p>
@@ -109,7 +119,6 @@ export default function PortfolioHome() {
               most breaches start in apps: auth mistakes, insecure APIs, bad
               secrets handling, and risky dependencies.
             </p>
-
             <div className="portfolio__cta">
               <a className="btn" href="#projects">
                 View Projects
@@ -142,6 +151,7 @@ export default function PortfolioHome() {
             UI.
           </p>
         </div>
+
         {/* CERTIFICATIONS */}
         <section id="certifications" className="portfolio__certs">
           <h2>Certifications</h2>
@@ -177,7 +187,6 @@ export default function PortfolioHome() {
           <h3>Stack</h3>
           <p>React, Vite, Node/Express, MongoDB/PostgreSQL, REST APIs.</p>
         </div>
-
         <div className="card">
           <h3>Security focus</h3>
           <p>
