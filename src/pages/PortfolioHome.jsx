@@ -108,7 +108,7 @@ export default function PortfolioHome() {
       {/* HERO */}
       <section className="portfolio__hero">
         <div className="portfolio__hero-inner">
-          <div>
+          <div className="portfolio__hero-text">
             <h1>Jeshmeer Maharajh</h1>
             <h2>Software Developer</h2>
             <p className="muted">
@@ -156,7 +156,7 @@ export default function PortfolioHome() {
         <section id="certifications" className="portfolio__certs">
           <h2>Certifications</h2>
           <p className="muted">
-            Proof of structured learning (Mimo) + continuous growth.
+            Through my structured learning (Mimo) + continuous growth.
           </p>
 
           <div className="portfolio__certs-grid">

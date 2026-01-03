@@ -367,8 +367,8 @@ input {
 }
 
 .portfolio__hero h1 {
-  margin: 0 0 0.35rem;
-  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.8rem, 2.8vw, 2.35rem);
 }
 
 .portfolio__hero p {
@@ -416,6 +416,10 @@ input {
   font-size: clamp(1rem, 1.4vw, 1.15rem); /* was 1.35rem (too loud) */
   line-height: 1.6;
   text-align: center;
+}
+
+.portfolio__hero-text {
+  max-width: 62ch;
 }
 
 .portfolio__cta {
@@ -663,18 +667,19 @@ footer,
 
 .portfolio__hero-inner {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 1.25rem;
+  grid-template-columns: 1fr 0.95fr; /*1.2fr 0.8fr;*/
+  gap: 0.9rem; /* 1.25rem; */
   align-items: center;
 }
 
 .portfolio__avatar-wrap {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .portfolio__avatar {
-  width: min(260px, 100%);
+  width: min(220px, 100%); /*was 260px */
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 999px;
@@ -823,6 +828,7 @@ footer,
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   margin-top: 16px;
+  grid-column: 1 / -1; /* makes Certifications span full width */
 }
 
 /* =========================
