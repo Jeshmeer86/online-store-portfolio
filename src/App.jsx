@@ -2,6 +2,7 @@
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ThankYou from "./pages/ThankYou";
 
 import PortfolioHome from "./pages/PortfolioHome";
 import StoreHome from "./pages/Home";
@@ -10,9 +11,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
-import Projects from "./pages/Projects";
 import ProjectPage from "./pages/ProjectPage";
 import ProjectsIndex from "./pages/ProjectsIndex";
+import Contact from "./pages/Contact";
 
 import "./styles/global.css";
 
@@ -27,6 +28,11 @@ export default function App() {
       <Navbar />
       <div className="app__content">
         <Routes>
+          <Route path="/contact" element={<Contact />} />
+
+          {/* ✅ Added this */}
+          <Route path="/thank-you" element={<ThankYou />} />
+
           <Route path="/" element={<PortfolioHome />} />
           <Route path="/store/projects" element={<ProjectsIndex />} />
           <Route path="/store/projects/:slug" element={<ProjectPage />} />
@@ -41,10 +47,6 @@ export default function App() {
           />
           <Route path="/products/:id" element={<RedirectToStoreProduct />} />
           <Route path="/cart" element={<Navigate to="/store/cart" replace />} />
-          <Route
-            path="/checkout"
-            element={<Navigate to="/store/checkout" replace />}
-          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

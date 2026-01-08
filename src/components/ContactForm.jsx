@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ added import
 
 function encode(data) {
   return Object.keys(data)
@@ -7,6 +8,8 @@ function encode(data) {
 }
 
 export default function ContactForm() {
+  const navigate = useNavigate(); // ✅ add
+
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ type: "idle", msg: "" });
 
@@ -29,17 +32,17 @@ export default function ContactForm() {
     setStatus({ type: "loading", msg: "Sending..." });
 
     try {
-      await fetch("/", {
+        const res = await fetch("/", { // ✅ captured response
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "contact", ...form }),
       });
 
-      setStatus({
-        type: "success",
-        msg: "Message sent. I’ll get back to you soon.",
-      });
+    if (!res.ok) throw new Error("Submit failed"); // ✅ important
+
       setForm({ name: "", email: "", message: "" });
+
+      navigate("/thank-you"); // ✅ redirected for clean conversion tracking
     } catch (err) {
       setStatus({
         type: "error",
@@ -72,6 +75,7 @@ export default function ContactForm() {
             className="search-input"
             value={form.name}
             onChange={onChange}
+            required
           />
         </div>
 
@@ -80,8 +84,10 @@ export default function ContactForm() {
           <input
             name="email"
             className="search-input"
+            type="email"
             value={form.email}
             onChange={onChange}
+            required
           />
         </div>
       </div>
@@ -94,6 +100,7 @@ export default function ContactForm() {
           style={{ minHeight: 120, resize: "vertical" }}
           value={form.message}
           onChange={onChange}
+          required
         />
       </div>
 
